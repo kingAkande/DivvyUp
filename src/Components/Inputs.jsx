@@ -3,16 +3,20 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
-const Inputs = ({isSelcted}) => {
-  const [bill, setBill] = useState(0);
-  const [expenses, setExpenses] = useState(0);
-  const [expenses2, setExpenses2] = useState('');
+const Inputs = ({ isSelcted }) => {
+  const [bill, setBill] = useState("");
+  const [expenses, setExpenses] = useState("");
+  const friendPay = bill ? bill - expenses : "" ;
 
-  console.log("the selected :" , isSelcted)
+  const [expenses2, setExpenses2] = useState("User");
+
+  console.log("the selected :", isSelcted);
 
   return (
-    <div className=" rounded bg-amber-100 w-[500px] h-[300px] p-7">
-      <h1 className="text-2xl font-extrabold">SPLIT A BILL WITH {isSelcted.name}</h1>
+    <form className=" rounded bg-amber-100 w-[500px] h-[300px] p-7">
+      <h1 className="text-2xl font-extrabold">
+        SPLIT A BILL WITH {isSelcted.name}
+      </h1>
       <Fields
         type="number"
         value={bill}
@@ -23,23 +27,28 @@ const Inputs = ({isSelcted}) => {
       <Fields
         type="number"
         value={expenses}
-        onChange={(e) => setExpenses(Number(e.target.value))}
+        onChange={(e) => setExpenses(Number(e.target.value)> bill ? expenses : Number(e.target.value) )}
       >
         <h1>🧍 Your expenses</h1>
       </Fields>
       <Fields
-        type="text"
-
-        value={expenses2}
-        onChange={(e) => setExpenses2(Number(e.target.value))}
+        type="text"friendPay
+        value={friendPay}
+        className={"diabled"}
       >
         <h1>🧍🧍‍♂️ {isSelcted.name}'s Expenses</h1>
       </Fields>
       <div className="flex justify-between w-[450px] mt-4 ">
         <h1>🤑 Who is paying the bill</h1>
-        <select className="bg-gray-200  w-[119px]">
-          <option className="text-center border ">You</option>
-          <option>{isSelcted.name}</option>
+        <select
+          value={expenses2}
+          onChange={(e) => setExpenses2(e.target.value)}
+          className="bg-gray-200  w-[119px]"
+        >
+          <option value="User"  className="text-center border ">
+            You
+          </option>
+          <option value="friend">{isSelcted.name}</option>
         </select>
       </div>
       <div className="flex justify-end  w-[450px] mt-4 ">
@@ -47,7 +56,7 @@ const Inputs = ({isSelcted}) => {
           Split bill
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
