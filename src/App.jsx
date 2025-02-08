@@ -8,7 +8,7 @@ import p2 from "./assets/Brian010.jpg";
 import p3 from "./assets/b2.jpg";
 import p4 from "./assets/Dp.webp";
 
-function App() {
+function App() {               
   const ppls = [
     { id: 1, name: "Clark", balance: -2, uRL: p1 },
     { id: 2, name: "Sarah", balance: 10, uRL: p2 },
