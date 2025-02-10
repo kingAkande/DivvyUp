@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
-const Inputs = ({ isSelcted }) => {
+const Inputs = ({ isSelcted, splitBill }) => {
   const [bill, setBill] = useState("");
   const [youPay, setyouPay] = useState("");
   const friendPay = bill ? bill - youPay : "";
@@ -12,8 +12,15 @@ const Inputs = ({ isSelcted }) => {
 
   console.log("the selected :", isSelcted);
 
+  function handleSubmit(e){
+    if(!bill || !youPay) return
+    e.preventDefault();
+    splitBill(whoPays=== "User" ? friendPay : -youPay)
+    
+  }
+
   return (
-    <form className=" rounded bg-amber-100 w-[500px] h-[300px] p-7">
+    <form onSubmit={handleSubmit} className=" rounded bg-amber-100 w-[500px] h-[300px] p-7">
       <h1 className="text-2xl font-extrabold">
         SPLIT A BILL WITH {isSelcted.name}
       </h1>
@@ -21,7 +28,7 @@ const Inputs = ({ isSelcted }) => {
         <label> 💰 Bill Value </label>
         <input
         
-          className=" bg-gray-200 ml-2 text-center w-[118.5px]"
+          className=" bg-gray-200 ml-2 text-center w-[118.5px]"    
           value={bill}
           onChange={(e)=>setBill(Number(e.target.value))}
         ></input>

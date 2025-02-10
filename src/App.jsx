@@ -21,6 +21,11 @@ function App() {
 
    const [isAdded, setisAdded] = useState(false);
 
+   function splitBill(value){
+      setFriends((friends)=> friends.map((el)=> el.id=== isSelcted.id ? {...el , balance: value + el.balance}: el))
+      //console.log(value)
+      setisSelected(null)
+   }
 
   function handleSelect(friend) {
     setisSelected((curr)=> curr?.id === friend.id ? null : friend);
@@ -37,7 +42,7 @@ function App() {
         isAdded={isAdded}
         setisAdded={setisAdded}
       />
-      {isSelcted && <Inputs isSelcted = {isSelcted} />}
+      {isSelcted && <Inputs splitBill={splitBill} isSelcted = {isSelcted} />}
     </div>
   );
 }
