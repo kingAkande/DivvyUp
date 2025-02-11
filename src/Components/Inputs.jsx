@@ -51,27 +51,6 @@ const Inputs = ({ isSelcted, splitBill }) => {
         ></input>
       </div>
 
-      {/* <Fields
-        type="number"
-        value={bill}
-        onChange={(e) => setBill(Number(e.target.value))}
-      >
-        <h1>💰 Bill value</h1>
-      </Fields>
-      <Fields
-        type="number"
-        value={expenses}
-        onChange={(e) => setExpenses(Number(e.target.value)> bill ? expenses : Number(e.target.value) )}
-      >
-        <h1>🧍 Your expenses</h1>
-      </Fields>
-      <Fields
-        type="text"friendPay
-        value={friendPay}bill
-        className={"diabled"}
-      >
-        <h1>🧍🧍‍♂️ {isSelcted.name}'s Expenses</h1>
-      </Fields> */}
       <div className="flex justify-between w-[450px] mt-4 ">
         <h1>🤑 Who is paying the bill</h1>
         <select
@@ -96,16 +75,3 @@ const Inputs = ({ isSelcted, splitBill }) => {
 
 export default Inputs;
 
-// function Fields({ children, type, value, onChange }) {
-//   return (
-//     <div className="flex justify-between w-[450px] mt-4  ">
-//       <label>Bill Value </label>
-//       <input
-//         type={type}
-//         className=" bg-gray-200 ml-2 text-center w-[118.5px]"
-//         value={value}
-//         onChange={onChange}
-//       ></input>
-//     </div>
-//   );
-// }

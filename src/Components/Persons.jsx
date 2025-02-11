@@ -65,11 +65,7 @@ export default Persons;
 
 function Person({ children, image, friends, handleSelect ,isSelcted}) {
   const theSelected = friends?.id===isSelcted?.id;
-  // const [isSelcted , setisSelected] = useState(false);
-
-  // function handleSelect(){
-  //   setisSelected((isSelcted)=> !isSelcted);
-  // }
+ 
   return (
     <div
       key={image}
