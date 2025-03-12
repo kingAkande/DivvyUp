@@ -27,11 +27,13 @@ const Persons = ({ friends, setFriends,isAdded, setisAdded, handleSelect, isSelc
     
   }
 
+  console.log(isSelcted)
+
   return (
     <div className="inline-flex flex-col  p-2">
       {friends.map((p) => (
-        <div key={p.id}>
-          <Person friends={p} image={p.uRL} handleSelect={handleSelect} isSelcted={isSelcted}>
+        
+          <Person key={p.id}  friends={p} image={p.uRL} handleSelect={handleSelect} isSelcted={isSelcted}>
             <h1 className="font-extrabold mb-1">{p.name}</h1>
             {p.balance < 0 && (
               <p className="text-red-600">
@@ -45,10 +47,10 @@ const Persons = ({ friends, setFriends,isAdded, setisAdded, handleSelect, isSelc
             )}
             {p.balance === 0 && <p>You and {p.name} are at even </p>}
           </Person>
-        </div>
+        
       ))}
 
-      {isAdded && <NewPerson onhandleNew={handleNewF} />}
+      {isAdded && <NewPerson  onhandleNew={handleNewF} />}
       <div className="flex justify-end mt-6 mr-4 ">
         <button
           className="bg-amber-400 px-3 py-1 rounded-xl font-bold"
@@ -68,7 +70,7 @@ function Person({ children, image, friends, handleSelect ,isSelcted}) {
  
   return (
     <div
-      key={image}
+  
       className={theSelected ?"flex items-center rounded-xl w-[400px] bg-amber-100  p-2 mt-4" : " flex items-center rounded-xl w-[400px]  p-2 mt-4" }
     >
       <img

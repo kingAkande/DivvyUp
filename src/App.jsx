@@ -29,6 +29,7 @@ function App() {
 
   function handleSelect(friend) {
     setisSelected((curr)=> curr?.id === friend.id ? null : friend);
+    // setisSelected({ ...friend }); 
     setisAdded(false)
   }
 
@@ -42,7 +43,7 @@ function App() {
         isAdded={isAdded}
         setisAdded={setisAdded}
       />
-      {isSelcted && <Inputs splitBill={splitBill} isSelcted = {isSelcted} />}
+      {isSelcted && <Inputs splitBill={splitBill} isSelcted = {isSelcted} key={isSelcted.id} />}
     </div>
   );
 }
